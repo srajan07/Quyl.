@@ -1,0 +1,16 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL") // Ensure this URL points to your Supabase instance
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+model Student {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  cohort    String
+  course    String
+  createdAt DateTime @default(now())
+}
